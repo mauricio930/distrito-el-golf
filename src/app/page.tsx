@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
-import { activities, benefits, businesses, socialPosts } from "@/lib/data";
+import { activities, benefits, businesses, membershipPlans, socialPosts } from "@/lib/data";
 
 function MapPreview() {
   return (
@@ -79,6 +79,20 @@ export default function Home() {
         </section>
 
         <section className="container section">
+          <div className="wallet-strip">
+            <div>
+              <p className="eyebrow">Wallet como accion principal</p>
+              <h2>Tu pase del barrio en el celular</h2>
+              <p className="meta">
+                Esta primera version deja preparada la experiencia visual para Apple Wallet y Google Wallet,
+                sin activar integraciones reales todavia.
+              </p>
+            </div>
+            <Link href="/wallet" className="button button-primary">Agregar a Wallet</Link>
+          </div>
+        </section>
+
+        <section className="container section">
           <p className="eyebrow">Beneficios activos</p>
           <h2>Primeras ventajas del distrito</h2>
           <div className="grid grid-4">
@@ -143,6 +157,20 @@ export default function Home() {
           <MapPreview />
           <div className="hero-actions">
             <Link href="/mapa" className="button button-secondary">Explorar mapa</Link>
+          </div>
+        </section>
+
+        <section className="container section">
+          <p className="eyebrow">Planes de membresia</p>
+          <h2>Preparado para crecer con locatarios</h2>
+          <div className="grid grid-3">
+            {membershipPlans.map((plan) => (
+              <article className="card plan-card" key={plan.name}>
+                <p className="eyebrow">{plan.name}</p>
+                <h3>{plan.price}</h3>
+                <p className="meta">{plan.description}</p>
+              </article>
+            ))}
           </div>
         </section>
       </main>

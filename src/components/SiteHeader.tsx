@@ -13,6 +13,16 @@ export function SiteHeader() {
           <Link href="/inscribir-negocio">Inscribir mi negocio</Link>
         </nav>
         <Link href="/wallet" className="button button-primary">Agregar a Wallet</Link>
+        <details className="mobile-menu">
+          <summary>Menu</summary>
+          <div>
+            <Link href="/">Inicio</Link>
+            <Link href="/mapa">Mapa</Link>
+            <Link href="/beneficios">Beneficios</Link>
+            <Link href="/actividades">Actividades</Link>
+            <Link href="/inscribir-negocio">Inscribir mi negocio</Link>
+          </div>
+        </details>
       </div>
     </header>
   );

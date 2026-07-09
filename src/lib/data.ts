@@ -128,10 +128,39 @@ export const socialPosts = [
     tag: "Proximamente",
     text: "El mapa real se conectara despues con georreferenciacion y comercios adheridos.",
   },
+  {
+    title: "Terrazas y after office",
+    tag: "Experiencias",
+    text: "Espacios del barrio preparados para activar encuentros, beneficios y comunidad.",
+  },
+  {
+    title: "Oficinas conectadas",
+    tag: "Aliados",
+    text: "Empresas, coworks y servicios podran integrarse a futuras campanas del distrito.",
+  },
+  {
+    title: "Comercios adheridos",
+    tag: "Locatarios",
+    text: "Una vitrina institucional para mostrar beneficios y novedades sin scraping de redes.",
+  },
 ];
 
-export const plans = [
-  "Basico",
-  "Destacado",
-  "Premium",
+export const plans = ["Basico", "Destacado", "Premium"];
+
+export const membershipPlans = [
+  {
+    name: "Basico",
+    price: "Presencia inicial",
+    description: "Ficha visual, categoria y preparacion para aparecer en el mapa del distrito.",
+  },
+  {
+    name: "Destacado",
+    price: "Mayor visibilidad",
+    description: "Beneficio demo, prioridad editorial y presencia en secciones destacadas.",
+  },
+  {
+    name: "Premium",
+    price: "Campanas futuras",
+    description: "Pensado para futuras activaciones Wallet, promociones y experiencias digitales.",
+  },
 ];

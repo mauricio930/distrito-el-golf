@@ -17,6 +17,13 @@ export default function MapPage() {
           <button className="button button-primary">Usar mi ubicacion</button>
         </div>
         <p className="meta">La georreferenciacion real se integrara en la proxima etapa.</p>
+        <section className="wallet-strip compact-strip">
+          <div>
+            <p className="eyebrow">Conectado al pase</p>
+            <h2>Mapa + Wallet</h2>
+            <p className="meta">El futuro pase permitira descubrir beneficios cercanos desde el celular.</p>
+          </div>
+        </section>
         <div className="hero-actions">
           {filters.map((filter) => (
             <button className="button button-secondary" key={filter}>{filter}</button>
