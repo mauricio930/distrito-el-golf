@@ -20,7 +20,7 @@ export function SocialPostCard({ post }: SocialPostCardProps) {
         <h3 className="mt-3 font-semibold text-petrol-900">{post.title}</h3>
         <p className="mt-2 text-sm leading-6 text-urban-700">{post.description}</p>
         <a
-          className="mt-4 inline-flex items-center gap-1.5 rounded border border-urban-100 px-3 py-2 text-sm font-semibold text-petrol-900"
+          className="btn-outline-contrast mt-4 inline-flex items-center gap-1.5 rounded px-3 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2"
           href={post.instagramUrl ?? "https://instagram.com"}
         >
           <Camera size={15} aria-hidden="true" />

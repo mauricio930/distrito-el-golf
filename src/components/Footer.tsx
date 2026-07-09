@@ -19,14 +19,14 @@ export function Footer() {
         </div>
         <div className="flex items-center gap-2">
           <a
-            className="rounded border border-urban-100 p-2 text-urban-700 transition hover:border-gold-300 hover:text-petrol-900"
+            className="btn-outline-contrast rounded p-2 transition focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2"
             href="https://instagram.com"
             aria-label="Instagram Distrito el Golf"
           >
             <Camera size={18} />
           </a>
           <a
-            className="rounded border border-urban-100 p-2 text-urban-700 transition hover:border-gold-300 hover:text-petrol-900"
+            className="btn-outline-contrast rounded p-2 transition focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2"
             href="https://linkedin.com"
             aria-label="LinkedIn Distrito el Golf"
           >

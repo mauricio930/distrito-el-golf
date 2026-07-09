@@ -25,11 +25,11 @@ export default function WalletPage() {
             </p>
             <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
               {/* Future Wallet integration: replace these placeholders with Apple Wallet and Google Wallet pass links. */}
-              <button className="inline-flex min-h-12 items-center justify-center gap-2 rounded bg-black px-5 py-3 text-sm font-semibold text-white">
+              <button className="btn-primary-contrast inline-flex min-h-12 items-center justify-center gap-2 rounded px-5 py-3 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2">
                 <WalletCards size={18} aria-hidden="true" />
                 Agregar a Apple Wallet
               </button>
-              <button className="inline-flex min-h-12 items-center justify-center gap-2 rounded border border-urban-100 bg-white px-5 py-3 text-sm font-semibold text-petrol-900">
+              <button className="btn-outline-contrast inline-flex min-h-12 items-center justify-center gap-2 rounded px-5 py-3 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2">
                 <Smartphone size={18} aria-hidden="true" />
                 Agregar a Google Wallet
               </button>

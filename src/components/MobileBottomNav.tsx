@@ -16,7 +16,7 @@ export function MobileBottomNav() {
           <Link
             key={item.href}
             href={item.href}
-            className="flex min-h-12 flex-col items-center justify-center gap-1 rounded text-xs font-semibold text-urban-700 transition hover:bg-urban-50 hover:text-petrol-900"
+            className="flex min-h-12 flex-col items-center justify-center gap-1 rounded text-xs font-semibold text-[#263638] transition hover:bg-[#F3F6F5] hover:text-[#0B3438] focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2"
           >
             <item.icon size={18} aria-hidden="true" />
             {item.label}

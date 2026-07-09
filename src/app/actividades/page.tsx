@@ -22,7 +22,7 @@ export default function ActivitiesPage() {
               <p className="mt-1 text-sm font-semibold text-gold-500">{activity.location}</p>
               <p className="mt-2 text-sm leading-6 text-urban-700">{activity.description}</p>
             </div>
-            <a className="inline-flex min-h-11 items-center justify-center rounded border border-urban-100 px-4 py-2 text-sm font-semibold text-petrol-900" href="#">
+            <a className="btn-outline-contrast inline-flex min-h-11 items-center justify-center rounded px-4 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2" href="#">
               Ver detalle
             </a>
           </article>

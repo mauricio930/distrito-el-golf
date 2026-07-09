@@ -25,7 +25,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded px-3 py-2 text-sm font-medium text-urban-700 transition hover:bg-urban-100 hover:text-petrol-900"
+              className="rounded px-3 py-2 text-sm font-medium text-[#263638] transition hover:bg-[#F3F6F5] hover:text-[#0B3438] focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2"
             >
               {item.label}
             </Link>
@@ -35,7 +35,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Link
             href="/wallet"
-            className="inline-flex min-h-10 items-center justify-center gap-2 rounded bg-petrol-900 px-3 py-2 text-sm font-semibold text-white shadow-soft transition hover:bg-petrol-700"
+            className="btn-primary-contrast inline-flex min-h-10 items-center justify-center gap-2 rounded px-3 py-2 text-sm font-semibold shadow-soft transition focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2"
           >
             <WalletCards size={17} aria-hidden="true" />
             <span className="hidden sm:inline">Agregar a Wallet</span>
@@ -43,7 +43,7 @@ export function Header() {
           </Link>
 
           <details className="relative md:hidden">
-            <summary className="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded border border-urban-100 bg-white text-petrol-900">
+            <summary className="btn-outline-contrast flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2">
               <Menu size={19} aria-label="Abrir menu" />
             </summary>
             <div className="absolute right-0 mt-2 w-64 rounded-lg border border-urban-100 bg-white p-2 shadow-soft">
@@ -51,7 +51,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block rounded px-3 py-3 text-sm font-semibold text-urban-700 hover:bg-urban-50 hover:text-petrol-900"
+                  className="block rounded px-3 py-3 text-sm font-semibold text-[#263638] hover:bg-[#F3F6F5] hover:text-[#0B3438] focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2"
                 >
                   {item.label}
                 </Link>

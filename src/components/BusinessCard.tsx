@@ -48,16 +48,16 @@ export function BusinessCard({ business, compact = false }: BusinessCardProps) {
           ) : null}
         </div>
         <div className="mt-4 flex flex-wrap items-center gap-2 text-sm">
-          <a className="inline-flex items-center gap-1.5 rounded bg-petrol-900 px-3 py-2 font-semibold text-white" href="/mapa">
+          <a className="btn-primary-contrast inline-flex items-center gap-1.5 rounded px-3 py-2 font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2" href="/mapa">
             <Map size={15} aria-hidden="true" />
             Ver en mapa
           </a>
-          <a className="inline-flex items-center gap-1.5 rounded border border-urban-100 px-3 py-2 font-semibold text-petrol-900" href={`https://www.google.com/maps/dir/?api=1&destination=${business.latitude},${business.longitude}`}>
+          <a className="btn-outline-contrast inline-flex items-center gap-1.5 rounded px-3 py-2 font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2" href={`https://www.google.com/maps/dir/?api=1&destination=${business.latitude},${business.longitude}`}>
             <Navigation size={15} aria-hidden="true" />
             Como llegar
           </a>
           {business.instagramUrl ? (
-            <a className="inline-flex items-center gap-1.5 rounded border border-urban-100 px-3 py-2 font-semibold text-petrol-900" href={business.instagramUrl}>
+            <a className="btn-outline-contrast inline-flex items-center gap-1.5 rounded px-3 py-2 font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2" href={business.instagramUrl}>
               <Camera size={15} aria-hidden="true" />
               Instagram
             </a>

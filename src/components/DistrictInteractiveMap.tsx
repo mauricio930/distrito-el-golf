@@ -82,16 +82,16 @@ function BusinessSheet({
         </p>
       ) : null}
       <div className="mt-4 flex flex-wrap gap-2">
-        <a className="inline-flex items-center gap-2 rounded bg-petrol-900 px-3 py-2 text-sm font-semibold text-white" href={directionsUrl}>
+        <a className="btn-primary-contrast inline-flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2" href={directionsUrl}>
           <Navigation size={16} aria-hidden="true" />
           Como llegar
         </a>
-        <a className="inline-flex items-center gap-2 rounded border border-urban-100 px-3 py-2 text-sm font-semibold text-petrol-900" href="/beneficios">
+        <a className="btn-outline-contrast inline-flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2" href="/beneficios">
           <BadgePercent size={16} aria-hidden="true" />
           Ver beneficio
         </a>
         {business.walletEligible ? (
-          <a className="inline-flex items-center gap-2 rounded border border-gold-300 px-3 py-2 text-sm font-semibold text-petrol-900" href="/wallet">
+          <a className="btn-secondary-gold inline-flex items-center gap-2 rounded px-3 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2" href="/wallet">
             <WalletCards size={16} aria-hidden="true" />
             Ver en Wallet
           </a>
@@ -134,12 +134,12 @@ function BusinessListCard({
       <div className="mt-4 flex flex-wrap gap-2">
         <button
           type="button"
-          className="rounded bg-petrol-900 px-3 py-2 text-sm font-semibold text-white"
+          className="btn-primary-contrast rounded px-3 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2"
           onClick={() => onFocus(business)}
         >
           Ver en mapa
         </button>
-        <a className="rounded border border-urban-100 px-3 py-2 text-sm font-semibold text-petrol-900" href={directionsUrl}>
+        <a className="btn-outline-contrast rounded px-3 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2" href={directionsUrl}>
           Como llegar
         </a>
       </div>
@@ -199,10 +199,10 @@ export function DistrictInteractiveMap() {
               <button
                 key={category}
                 type="button"
-                onClick={() => setSelectedCategory(category)}
-                className={cn(
-                  "min-h-10 shrink-0 rounded px-3 py-2 text-sm font-semibold transition",
-                  selectedCategory === category ? "bg-gold-300 text-petrol-900" : "bg-urban-50 text-urban-700"
+            onClick={() => setSelectedCategory(category)}
+            className={cn(
+                  "min-h-10 shrink-0 rounded px-3 py-2 text-sm font-semibold transition focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2",
+                  selectedCategory === category ? "btn-secondary-gold" : "btn-outline-contrast"
                 )}
               >
                 {categoryLabels[category]}
@@ -212,7 +212,7 @@ export function DistrictInteractiveMap() {
           <button
             type="button"
             onClick={requestLocation}
-            className="inline-flex min-h-11 items-center justify-center gap-2 rounded bg-petrol-900 px-4 py-2 text-sm font-semibold text-white"
+            className="btn-primary-contrast inline-flex min-h-11 items-center justify-center gap-2 rounded px-4 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2"
           >
             <LocateFixed size={17} aria-hidden="true" />
             Usar mi ubicacion

@@ -4,8 +4,8 @@
   color-scheme: light;
   --background: #f8faf9;
   --foreground: #17211f;
-  --petrol: #063b45;
-  --petrol-light: #0d5964;
+  --petrol: #0b3438;
+  --petrol-light: #17484c;
   --graphite: #252a2c;
   --gold: #c8aa67;
   --green: #507a58;
@@ -18,10 +18,10 @@
   --color-petrol-50: #eef7f7;
   --color-petrol-100: #d7ebec;
   --color-petrol-500: #2b686b;
-  --color-petrol-700: #17484c;
-  --color-petrol-900: #0b2a30;
-  --color-gold-100: #f4ead1;
-  --color-gold-300: #d7bc74;
+  --color-petrol-700: #08292d;
+  --color-petrol-900: #0b3438;
+  --color-gold-100: #f8ebc8;
+  --color-gold-300: #d1a53a;
   --color-gold-500: #b8933e;
   --color-green-100: #dce9df;
   --color-green-500: #5f7f68;
@@ -50,6 +50,63 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.btn-primary-contrast {
+  background: #0b3438;
+  border: 1px solid #0b3438;
+  color: #ffffff;
+}
+
+.btn-primary-contrast:hover,
+.btn-primary-contrast:active {
+  background: #08292d;
+  border-color: #08292d;
+  color: #ffffff;
+}
+
+.btn-secondary-gold {
+  background: #f8ebc8;
+  border: 1px solid #d1a53a;
+  color: #0b3438;
+}
+
+.btn-secondary-gold:hover,
+.btn-secondary-gold:active {
+  background: #eed99f;
+  color: #08292d;
+}
+
+.btn-outline-contrast {
+  background: #ffffff;
+  border: 1px solid #d8dfdf;
+  color: #263638;
+}
+
+.btn-outline-contrast:hover,
+.btn-outline-contrast:active {
+  background: #f3f6f5;
+  color: #0b3438;
+}
+
+.btn-primary-contrast,
+.btn-secondary-gold,
+.btn-outline-contrast {
+  outline: none;
+}
+
+.btn-primary-contrast svg,
+.btn-secondary-gold svg,
+.btn-outline-contrast svg {
+  color: currentColor;
+  stroke: currentColor;
+}
+
+.btn-primary-contrast:focus-visible,
+.btn-secondary-gold:focus-visible,
+.btn-outline-contrast:focus-visible,
+.button:focus-visible {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d1a53a;
 }
 
 .page-shell {
@@ -154,15 +211,34 @@ a {
 }
 
 .button-primary {
-  background: var(--petrol);
-  color: white;
+  background: #0b3438;
+  border: 1px solid #0b3438;
+  color: #ffffff;
   box-shadow: 0 14px 30px rgba(6, 59, 69, 0.2);
 }
 
+.button-primary:hover,
+.button-primary:active {
+  background: #08292d;
+  border-color: #08292d;
+  color: #ffffff;
+}
+
 .button-secondary {
-  border: 1px solid var(--line);
-  background: white;
-  color: var(--petrol);
+  border: 1px solid #d8dfdf;
+  background: #ffffff;
+  color: #263638;
+}
+
+.button-secondary:hover,
+.button-secondary:active {
+  background: #f3f6f5;
+  color: #0b3438;
+}
+
+.button svg {
+  color: currentColor;
+  stroke: currentColor;
 }
 
 .button:disabled {

@@ -14,7 +14,7 @@ export default function BenefitsPage() {
       />
       <div className="mt-6 flex gap-2 overflow-x-auto pb-2">
         {filters.map((filter) => (
-          <button key={filter} className="shrink-0 rounded bg-white px-3 py-2 text-sm font-semibold text-urban-700 shadow-sm">
+          <button key={filter} className="btn-outline-contrast shrink-0 rounded px-3 py-2 text-sm font-semibold shadow-sm focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2">
             {filter}
           </button>
         ))}

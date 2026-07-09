@@ -27,7 +27,7 @@ export function BenefitCard({ benefit }: BenefitCardProps) {
           </span>
         </div>
         <a
-          className="mt-4 inline-flex rounded bg-petrol-900 px-3 py-2 text-sm font-semibold text-white"
+          className="btn-primary-contrast mt-4 inline-flex rounded px-3 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2"
           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(benefit.address + " Las Condes")}`}
         >
           Ver ubicacion

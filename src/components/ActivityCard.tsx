@@ -26,7 +26,7 @@ export function ActivityCard({ activity }: ActivityCardProps) {
             {activity.location}
           </span>
         </div>
-        <a className="mt-4 inline-flex rounded border border-urban-100 px-3 py-2 text-sm font-semibold text-petrol-900" href="/actividades">
+        <a className="btn-outline-contrast mt-4 inline-flex rounded px-3 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2" href="/actividades">
           Ver detalle
         </a>
       </div>

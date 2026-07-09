@@ -113,7 +113,7 @@ export function BusinessRegistrationForm() {
           ))}
         </div>
       </fieldset>
-      <button className="min-h-12 rounded bg-petrol-900 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-petrol-700">
+      <button className="btn-primary-contrast min-h-12 rounded px-5 py-3 text-sm font-semibold shadow-soft transition focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2">
         Enviar solicitud
       </button>
     </form>

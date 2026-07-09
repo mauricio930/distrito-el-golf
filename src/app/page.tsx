@@ -139,11 +139,11 @@ export default function HomePage() {
             <p className="mt-1 text-sm text-urban-700">Instagram y LinkedIn seran los canales visibles de la fundacion.</p>
           </div>
           <div className="flex gap-2">
-            <a className="inline-flex items-center gap-2 rounded border border-urban-100 px-4 py-2 text-sm font-semibold text-urban-700" href="https://instagram.com">
+            <a className="btn-outline-contrast inline-flex items-center gap-2 rounded px-4 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2" href="https://instagram.com">
               <Camera size={17} aria-hidden="true" />
               Instagram
             </a>
-            <a className="inline-flex items-center gap-2 rounded border border-urban-100 px-4 py-2 text-sm font-semibold text-urban-700" href="https://linkedin.com">
+            <a className="btn-outline-contrast inline-flex items-center gap-2 rounded px-4 py-2 text-sm font-semibold focus-visible:ring-2 focus-visible:ring-[#D1A53A] focus-visible:ring-offset-2" href="https://linkedin.com">
               <BriefcaseBusiness size={17} aria-hidden="true" />
               LinkedIn
             </a>
