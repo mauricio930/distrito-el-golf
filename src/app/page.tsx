@@ -1,65 +1,117 @@
-import Image from "next/image";
+import Link from "next/link";
+import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
+import { activities, benefits, businesses } from "@/lib/data";
+
+function MapPreview() {
+  return (
+    <div className="map-preview" aria-label="Vista previa del mapa del Distrito">
+      <span className="pin" style={{ left: "22%", top: "38%" }} />
+      <span className="pin" style={{ left: "54%", top: "24%" }} />
+      <span className="pin" style={{ left: "68%", top: "58%" }} />
+      <span className="pin" style={{ left: "38%", top: "70%" }} />
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="page-shell">
+      <SiteHeader />
+      <main>
+        <section className="container hero">
+          <div>
+            <p className="eyebrow">El Golf, Las Condes</p>
+            <h1>Distrito el Golf</h1>
+            <p className="lead">
+              El pase digital para descubrir beneficios, actividades y comercios
+              del barrio El Golf.
+            </p>
+            <div className="hero-actions">
+              <Link href="/wallet" className="button button-primary">Agregar a Wallet</Link>
+              <Link href="/mapa" className="button button-secondary">Ver mapa</Link>
+              <Link href="/inscribir-negocio" className="button button-secondary">Inscribir mi negocio</Link>
+            </div>
+          </div>
+          <aside className="pass-card">
+            <p className="pass-label">Distrito el Golf Pass</p>
+            <h2>Wallet, mapa y beneficios en preparacion</h2>
+            <p>
+              Una demo visual para presentar el distrito a locatarios, oficinas,
+              aliados y futuros socios.
+            </p>
+          </aside>
+        </section>
+
+        <section className="container section">
+          <p className="eyebrow">Como funciona</p>
+          <h2>Una experiencia simple desde el celular</h2>
+          <div className="grid grid-3">
+            {[
+              "Agrega el pase a tu Wallet.",
+              "Descubre comercios, beneficios y actividades cercanas.",
+              "Participa del Distrito el Golf desde tu celular.",
+            ].map((step, index) => (
+              <article className="card" key={step}>
+                <p className="eyebrow">0{index + 1}</p>
+                <h3>{step}</h3>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="container section">
+          <p className="eyebrow">Beneficios activos</p>
+          <h2>Primeras ventajas del distrito</h2>
+          <div className="grid grid-4">
+            {benefits.map((benefit) => (
+              <article className="card" key={benefit.business}>
+                <p className="eyebrow">{benefit.category}</p>
+                <h3>{benefit.business}</h3>
+                <p className="meta">{benefit.offer}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="container section">
+          <p className="eyebrow">Proximas actividades</p>
+          <h2>Agenda inicial del barrio</h2>
+          <div className="grid grid-3">
+            {activities.map((activity) => (
+              <article className="card" key={activity.title}>
+                <p className="eyebrow">{activity.date} / {activity.time}</p>
+                <h3>{activity.title}</h3>
+                <p className="meta">{activity.place}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="container section">
+          <p className="eyebrow">Comercios destacados</p>
+          <h2>Primeros puntos de la guia</h2>
+          <div className="grid grid-2">
+            {businesses.map((business) => (
+              <article className="card" key={business.name}>
+                <p className="eyebrow">{business.category} / {business.distance}</p>
+                <h3>{business.name}</h3>
+                <p className="meta">{business.address}</p>
+                <p className="meta">{business.benefit}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="container section">
+          <p className="eyebrow">Mapa del Distrito</p>
+          <h2>Vista previa georreferenciada</h2>
+          <MapPreview />
+          <div className="hero-actions">
+            <Link href="/mapa" className="button button-secondary">Explorar mapa</Link>
+          </div>
+        </section>
       </main>
+      <SiteFooter />
     </div>
   );
 }
