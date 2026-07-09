@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
+import { WalletDemoActions } from "@/components/WalletDemoActions";
 
 export default function WalletPage() {
   return (
@@ -33,10 +33,7 @@ export default function WalletPage() {
               <li>Descubrir comercios adheridos</li>
               <li>Participar en actividades</li>
             </ul>
-            <div className="hero-actions">
-              <Link href="#" className="button button-primary">Agregar a Apple Wallet</Link>
-              <Link href="#" className="button button-secondary">Agregar a Google Wallet</Link>
-            </div>
+            <WalletDemoActions />
           </section>
         </div>
       </main>

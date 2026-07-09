@@ -12,12 +12,25 @@ export default function ActivitiesPage() {
         <div className="grid">
           {activities.map((activity) => (
             <article className="card" key={activity.title}>
+              <div
+                className="business-image"
+                style={{ backgroundImage: `url(${activity.imageUrl})` }}
+                aria-label={activity.title}
+              />
               <p className="eyebrow">{activity.date} / {activity.time}</p>
               <h3>{activity.title}</h3>
               <p className="meta">{activity.place}</p>
+              <p className="meta">{activity.address}</p>
               <p className="meta">{activity.description}</p>
               <div className="hero-actions">
-                <button className="button button-secondary">Ver detalle</button>
+                <a
+                  className="button button-secondary"
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(activity.address)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Ver ubicacion
+                </a>
               </div>
             </article>
           ))}

@@ -96,13 +96,16 @@ export default function Home() {
           <p className="eyebrow">Beneficios activos</p>
           <h2>Primeras ventajas del distrito</h2>
           <div className="grid grid-4">
-            {benefits.map((benefit) => (
+            {benefits.slice(0, 4).map((benefit) => (
               <article className="card" key={benefit.business}>
-                <p className="eyebrow">{benefit.category}</p>
+                <p className="eyebrow">{benefit.categoryLabel}</p>
                 <h3>{benefit.business}</h3>
                 <p className="meta">{benefit.offer}</p>
               </article>
             ))}
+          </div>
+          <div className="hero-actions">
+            <Link href="/beneficios" className="button button-secondary">Explorar beneficios</Link>
           </div>
         </section>
 
@@ -134,18 +137,32 @@ export default function Home() {
               </article>
             ))}
           </div>
+          <div className="hero-actions">
+            <Link href="/actividades" className="button button-secondary">Ver agenda</Link>
+          </div>
         </section>
 
         <section className="container section">
           <p className="eyebrow">Comercios destacados</p>
           <h2>Primeros puntos de la guia</h2>
           <div className="grid grid-2">
-            {businesses.map((business) => (
+            {businesses.filter((business) => business.featured).map((business) => (
               <article className="card" key={business.name}>
-                <p className="eyebrow">{business.category} / {business.distance}</p>
+                <p className="eyebrow">{business.categoryLabel}</p>
                 <h3>{business.name}</h3>
                 <p className="meta">{business.address}</p>
                 <p className="meta">{business.benefit}</p>
+                <div className="hero-actions">
+                  <Link href={`/mapa?business=${business.id}`} className="button button-secondary">Ver en mapa</Link>
+                  <a
+                    className="button button-secondary"
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${business.latitude},${business.longitude}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Como llegar
+                  </a>
+                </div>
               </article>
             ))}
           </div>
