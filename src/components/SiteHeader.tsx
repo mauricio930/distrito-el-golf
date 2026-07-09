@@ -31,7 +31,9 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="footer">
-      <div className="container">Distrito el Golf / Instagram / LinkedIn</div>
+      <div className="container">
+        Distrito el Golf / Fundacion Distrito el Golf / Instagram / LinkedIn
+      </div>
     </footer>
   );
 }

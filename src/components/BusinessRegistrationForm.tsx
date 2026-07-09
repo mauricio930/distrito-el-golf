@@ -28,6 +28,7 @@ export function BusinessRegistrationForm() {
         <div className="field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" /></div>
         <div className="field"><label htmlFor="phone">Telefono</label><input id="phone" name="phone" /></div>
         <div className="field"><label htmlFor="instagram">Instagram</label><input id="instagram" name="instagram" /></div>
+        <div className="field"><label htmlFor="website">Sitio web</label><input id="website" name="website" /></div>
       </section>
 
       <section className="card form">
