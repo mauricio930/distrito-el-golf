@@ -1,159 +1,121 @@
 "use client";
 
 import { useState } from "react";
-import { plans } from "@/lib/data";
+import { CheckCircle2 } from "lucide-react";
 
-const requiredFields = [
-  "businessName",
-  "category",
-  "address",
-  "owner",
-  "email",
-  "plan",
-];
+const inputClass =
+  "min-h-11 rounded border border-urban-100 bg-white px-3 py-2 text-sm text-petrol-900 outline-none transition placeholder:text-urban-300 focus:border-gold-300 focus:ring-2 focus:ring-gold-100";
 
 export function BusinessRegistrationForm() {
   const [submitted, setSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitError, setSubmitError] = useState("");
-
-  function validate(formData: FormData) {
-    const nextErrors: Record<string, string> = {};
-
-    requiredFields.forEach((field) => {
-      const value = String(formData.get(field) ?? "").trim();
-      if (!value) {
-        nextErrors[field] = "Completa este campo.";
-      }
-    });
-
-    const email = String(formData.get("email") ?? "").trim();
-    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      nextErrors.email = "Ingresa un email valido.";
-    }
-
-    return nextErrors;
-  }
 
   return (
     <form
-      className="form"
+      className="grid gap-4 rounded-lg border border-urban-100 bg-white p-4 shadow-soft"
       onSubmit={(event) => {
         event.preventDefault();
-        const formData = new FormData(event.currentTarget);
-        const nextErrors = validate(formData);
-        setErrors(nextErrors);
-        setSubmitError("");
-        setSubmitted(false);
-
-        if (Object.keys(nextErrors).length) {
-          return;
-        }
-
-        setIsSubmitting(true);
-
-        fetch("/api/businesses", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            name: formData.get("businessName"),
-            legal_name: formData.get("legalName"),
-            rut: formData.get("rut"),
-            contact_name: formData.get("owner"),
-            email: formData.get("email"),
-            phone: formData.get("phone"),
-            address: formData.get("address"),
-            category: formData.get("category"),
-            description: formData.get("description"),
-            instagram_url: formData.get("instagram"),
-            website_url: formData.get("website"),
-            opening_hours: formData.get("openingHours"),
-            benefit_title: formData.get("benefitTitle"),
-            benefit_description: formData.get("benefit"),
-            membership_plan: formData.get("plan"),
-          }),
-        })
-          .then(async (response) => {
-            if (!response.ok) {
-              const data = await response.json().catch(() => ({}));
-              throw new Error(data.error ?? "No se pudo enviar la solicitud.");
-            }
-
-            event.currentTarget.reset();
-            setSubmitted(true);
-          })
-          .catch((error: Error) => {
-            setSubmitError(error.message);
-          })
-          .finally(() => {
-            setIsSubmitting(false);
-          });
+        // Future Supabase/admin integration: send this form to a businesses table for review.
+        // Future membership payments: connect the selected plan to a payment provider after approval.
+        setSubmitted(true);
+        event.currentTarget.reset();
       }}
-      noValidate
     >
-      <section className="card form">
-        <h2>Datos del negocio</h2>
-        <div className="field"><label htmlFor="business-name">Nombre comercial</label><input id="business-name" name="businessName" />{errors.businessName ? <span className="form-error">{errors.businessName}</span> : null}</div>
-        <div className="field"><label htmlFor="legal-name">Razon social</label><input id="legal-name" name="legalName" /></div>
-        <div className="field"><label htmlFor="rut">RUT</label><input id="rut" name="rut" /></div>
-        <div className="field">
-          <label htmlFor="category">Categoria</label>
-          <select id="category" name="category" defaultValue="">
-            <option value="" disabled>Selecciona una categoria</option>
-            <option value="cafe">Cafe</option>
-            <option value="restaurante">Restaurante</option>
-            <option value="oficina">Oficina</option>
-            <option value="cowork">Cowork</option>
-            <option value="servicios">Servicios</option>
-            <option value="bienestar">Bienestar</option>
-            <option value="estacionamiento">Estacionamiento</option>
-            <option value="retail">Retail</option>
-            <option value="local">Local disponible</option>
-          </select>
-          {errors.category ? <span className="form-error">{errors.category}</span> : null}
-        </div>
-        <div className="field"><label htmlFor="description">Descripcion</label><textarea id="description" name="description" rows={4} />{errors.description ? <span className="form-error">{errors.description}</span> : null}</div>
-        <div className="field"><label htmlFor="address">Direccion</label><input id="address" name="address" />{errors.address ? <span className="form-error">{errors.address}</span> : null}</div>
-        <div className="field"><label htmlFor="opening-hours">Horario</label><input id="opening-hours" name="openingHours" /></div>
-      </section>
-
-      <section className="card form">
-        <h2>Contacto</h2>
-        <div className="field"><label htmlFor="owner">Responsable</label><input id="owner" name="owner" />{errors.owner ? <span className="form-error">{errors.owner}</span> : null}</div>
-        <div className="field"><label htmlFor="email">Email</label><input id="email" name="email" type="email" />{errors.email ? <span className="form-error">{errors.email}</span> : null}</div>
-        <div className="field"><label htmlFor="phone">Telefono</label><input id="phone" name="phone" />{errors.phone ? <span className="form-error">{errors.phone}</span> : null}</div>
-        <div className="field"><label htmlFor="instagram">Instagram</label><input id="instagram" name="instagram" /></div>
-        <div className="field"><label htmlFor="website">Sitio web</label><input id="website" name="website" /></div>
-      </section>
-
-      <section className="card form">
-        <h2>Beneficio ofrecido</h2>
-        <div className="field"><label htmlFor="benefit-title">Titulo del beneficio</label><input id="benefit-title" name="benefitTitle" /></div>
-        <div className="field"><label htmlFor="benefit">Beneficio para el distrito</label><textarea id="benefit" name="benefit" rows={3} />{errors.benefit ? <span className="form-error">{errors.benefit}</span> : null}</div>
-      </section>
-
-      <section className="card form">
-        <h2>Plan de membresia</h2>
-        <div className="field">
-          <label htmlFor="plan">Plan</label>
-          <select id="plan" name="plan" defaultValue="">
-            <option value="" disabled>Selecciona un plan</option>
-            {plans.map((plan) => <option key={plan}>{plan}</option>)}
-          </select>
-          {errors.plan ? <span className="form-error">{errors.plan}</span> : null}
-        </div>
-      </section>
-
-      <button className="button button-primary" type="submit" disabled={isSubmitting}>
-        {isSubmitting ? "Enviando..." : "Enviar solicitud"}
-      </button>
       {submitted ? (
-        <p className="success-message" role="status">
-          Tu solicitud fue recibida correctamente. El equipo de Distrito el Golf revisara la informacion antes de publicar el negocio.
-        </p>
+        <div className="rounded-lg border border-gold-300 bg-gold-100 p-4 text-petrol-900">
+          <div className="flex items-start gap-3">
+            <CheckCircle2 className="mt-0.5 shrink-0" size={20} />
+            <p className="text-sm font-semibold">Solicitud enviada. En esta primera version solo mostramos este mensaje de exito.</p>
+          </div>
+        </div>
       ) : null}
-      {submitError ? <p className="form-error" role="alert">{submitError}</p> : null}
+
+      <fieldset className="grid gap-3 rounded-lg border border-urban-100 p-4">
+        <legend className="px-1 text-sm font-bold text-petrol-900">A. Datos del negocio</legend>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <label className="grid gap-1 text-sm font-medium text-urban-700">
+            Nombre comercial
+            <input className={inputClass} name="businessName" required placeholder="Ej. Cafe Origen" />
+          </label>
+          <label className="grid gap-1 text-sm font-medium text-urban-700">
+            Categoria
+            <select className={inputClass} name="category" required defaultValue="">
+              <option value="" disabled>
+                Selecciona categoria
+              </option>
+              <option value="restaurante">Restaurantes</option>
+              <option value="cafe">Cafe</option>
+              <option value="servicios">Servicios</option>
+              <option value="bienestar">Bienestar</option>
+              <option value="oficina">Oficinas</option>
+              <option value="cowork">Cowork</option>
+              <option value="retail">Retail</option>
+              <option value="local-disponible">Local disponible</option>
+              <option value="estacionamiento">Estacionamiento</option>
+            </select>
+          </label>
+          <label className="grid gap-1 text-sm font-medium text-urban-700 sm:col-span-2">
+            Descripcion
+            <textarea className={`${inputClass} min-h-24 resize-y`} name="description" required />
+          </label>
+          <label className="grid gap-1 text-sm font-medium text-urban-700 sm:col-span-2">
+            Direccion
+            <input className={inputClass} name="address" required placeholder="Calle, numero, Las Condes" />
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset className="grid gap-3 rounded-lg border border-urban-100 p-4">
+        <legend className="px-1 text-sm font-bold text-petrol-900">B. Datos de contacto</legend>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <label className="grid gap-1 text-sm font-medium text-urban-700">
+            Responsable
+            <input className={inputClass} name="ownerName" required placeholder="Nombre y apellido" />
+          </label>
+          <label className="grid gap-1 text-sm font-medium text-urban-700">
+            Email
+            <input className={inputClass} name="email" type="email" required placeholder="contacto@negocio.cl" />
+          </label>
+          <label className="grid gap-1 text-sm font-medium text-urban-700">
+            Telefono
+            <input className={inputClass} name="phone" required placeholder="+56 9..." />
+          </label>
+          <label className="grid gap-1 text-sm font-medium text-urban-700">
+            Instagram
+            <input className={inputClass} name="instagram" placeholder="@negocio" />
+          </label>
+          <label className="grid gap-1 text-sm font-medium text-urban-700 sm:col-span-2">
+            Sitio web
+            <input className={inputClass} name="website" placeholder="https://..." />
+          </label>
+        </div>
+      </fieldset>
+
+      <fieldset className="grid gap-3 rounded-lg border border-urban-100 p-4">
+        <legend className="px-1 text-sm font-bold text-petrol-900">C. Beneficio para el distrito</legend>
+        <label className="grid gap-1 text-sm font-medium text-urban-700">
+          Beneficio ofrecido
+          <textarea className={`${inputClass} min-h-24 resize-y`} name="benefit" required />
+        </label>
+        <label className="grid gap-1 text-sm font-medium text-urban-700">
+          Vigencia estimada
+          <input className={inputClass} name="validUntil" placeholder="Ej. 3 meses, temporada invierno, permanente" />
+        </label>
+      </fieldset>
+
+      <fieldset className="grid gap-3 rounded-lg border border-urban-100 p-4">
+        <legend className="px-1 text-sm font-bold text-petrol-900">D. Plan de membresia</legend>
+        <div className="grid gap-3 sm:grid-cols-3">
+          {["Basico", "Destacado", "Premium"].map((plan) => (
+            <label key={plan} className="cursor-pointer rounded-lg border border-urban-100 p-3 text-sm font-semibold text-petrol-900 has-[:checked]:border-gold-300 has-[:checked]:bg-gold-100">
+              <input className="sr-only" type="radio" name="plan" value={plan.toLowerCase()} required />
+              {plan}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <button className="min-h-12 rounded bg-petrol-900 px-5 py-3 text-sm font-semibold text-white shadow-soft transition hover:bg-petrol-700">
+        Enviar solicitud
+      </button>
     </form>
   );
 }

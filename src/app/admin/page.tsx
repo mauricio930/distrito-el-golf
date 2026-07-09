@@ -1,11 +1,8 @@
 import { AdminPanel } from "@/components/AdminPanel";
-import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
 
 export default function AdminPage() {
   return (
-    <div className="page-shell">
-      <SiteHeader />
-      <main className="container section">
+      <main className="mx-auto max-w-6xl px-4 py-8">
         <p className="eyebrow">Administracion</p>
         <h1>Panel Distrito el Golf</h1>
         <p className="lead">
@@ -14,7 +11,5 @@ export default function AdminPage() {
         </p>
         <AdminPanel />
       </main>
-      <SiteFooter />
-    </div>
   );
 }

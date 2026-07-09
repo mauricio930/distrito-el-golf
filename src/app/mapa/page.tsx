@@ -1,37 +1,20 @@
 import { DistrictMapLoader } from "@/components/DistrictMapLoader";
-import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
-import { getMapBusinesses } from "@/lib/supabase-public";
+import { SectionHeader } from "@/components/SectionHeader";
 
-export const dynamic = "force-dynamic";
-
-export default async function MapPage() {
-  const businesses = await getMapBusinesses();
-
+export default function MapPage() {
   return (
-    <div className="page-shell">
-      <SiteHeader />
-      <main className="container section">
-        <p className="eyebrow">Mapa</p>
-        <h1>Mapa del Distrito</h1>
-        <p className="lead">
-          Activa tu ubicacion para descubrir comercios y beneficios cerca de ti.
+    <main className="mx-auto max-w-6xl px-4 py-8">
+      <div className="mb-6">
+        <SectionHeader
+          eyebrow="Mapa real"
+          title="Mapa del Distrito"
+          description="Explora negocios demo georreferenciados del barrio El Golf. Activa tu ubicacion para ordenar lugares cercanos."
+        />
+        <p className="mt-3 rounded-lg border border-gold-300 bg-gold-100 p-3 text-sm font-semibold text-petrol-900">
+          La georreferenciacion real con datos de comercios registrados se integrara en la proxima etapa.
         </p>
-        <p className="meta">
-          La georreferenciacion GPS real, el panel administrador y el mapa con
-          datos conectados a Supabase se integraran en una etapa posterior.
-        </p>
-        <section className="wallet-strip compact-strip">
-          <div>
-            <p className="eyebrow">Conectado al pase</p>
-            <h2>Mapa + Wallet</h2>
-            <p className="meta">
-              El futuro pase permitira descubrir beneficios cercanos desde el celular.
-            </p>
-          </div>
-        </section>
-        <DistrictMapLoader businesses={businesses} />
-      </main>
-      <SiteFooter />
-    </div>
+      </div>
+      <DistrictMapLoader />
+    </main>
   );
 }
