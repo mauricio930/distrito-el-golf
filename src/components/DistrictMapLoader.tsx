@@ -1,8 +1,9 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import type { Business } from "@/lib/data";
 
-export const DistrictMapLoader = dynamic(
+export const DistrictMapLoader = dynamic<{ businesses?: Business[] }>(
   () => import("@/components/DistrictMap").then((module) => module.DistrictMap),
   {
     ssr: false,

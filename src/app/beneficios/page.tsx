@@ -1,7 +1,12 @@
 import { BenefitsExplorer } from "@/components/BenefitsExplorer";
 import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
+import { getPublicBenefits } from "@/lib/supabase-public";
 
-export default function BenefitsPage() {
+export const dynamic = "force-dynamic";
+
+export default async function BenefitsPage() {
+  const benefits = await getPublicBenefits();
+
   return (
     <div className="page-shell">
       <SiteHeader />
@@ -11,7 +16,7 @@ export default function BenefitsPage() {
         <p className="lead">
           Promociones demo preparadas para el futuro pase digital Distrito el Golf.
         </p>
-        <BenefitsExplorer />
+        <BenefitsExplorer benefits={benefits} />
       </main>
       <SiteFooter />
     </div>

@@ -42,6 +42,17 @@ export type Activity = {
   longitude: number;
 };
 
+export type Benefit = {
+  id: string;
+  businessId: string;
+  business: string;
+  category: Category;
+  categoryLabel: string;
+  offer: string;
+  validUntil: string;
+  address: string;
+};
+
 export const districtCenter = {
   latitude: -33.4169,
   longitude: -70.5972,
@@ -244,7 +255,7 @@ export const businesses: Business[] = [
   },
 ];
 
-export const benefits = businesses.map((business) => ({
+export const benefits: Benefit[] = businesses.map((business) => ({
   id: `benefit-${business.id}`,
   businessId: business.id,
   business: business.name,

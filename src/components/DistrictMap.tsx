@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
 import L from "leaflet";
-import { businesses, categoryFilters, districtCenter, type Business, type Category } from "@/lib/data";
+import { businesses as demoBusinesses, categoryFilters, districtCenter, type Business, type Category } from "@/lib/data";
 
 type UserLocation = {
   latitude: number;
@@ -55,7 +55,7 @@ function MapFocus({ selectedBusiness }: { selectedBusiness?: Business }) {
   return null;
 }
 
-export function DistrictMap() {
+export function DistrictMap({ businesses = demoBusinesses }: { businesses?: Business[] }) {
   const [selectedCategory, setSelectedCategory] = useState<Category | "todos">("todos");
   const [selectedId, setSelectedId] = useState<string>(businesses[0]?.id ?? "");
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null);
@@ -67,7 +67,7 @@ export function DistrictMap() {
     if (businessId && businesses.some((business) => business.id === businessId)) {
       setSelectedId(businessId);
     }
-  }, []);
+  }, [businesses]);
 
   const visibleBusinesses = useMemo(() => {
     const filtered =

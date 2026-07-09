@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { benefits, categoryFilters, type Category } from "@/lib/data";
+import { benefits as demoBenefits, categoryFilters, type Benefit, type Category } from "@/lib/data";
 
-export function BenefitsExplorer() {
+export function BenefitsExplorer({ benefits = demoBenefits }: { benefits?: Benefit[] }) {
   const [selectedCategory, setSelectedCategory] = useState<Category | "todos">("todos");
   const [selectedBusiness, setSelectedBusiness] = useState("");
 

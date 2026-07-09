@@ -146,6 +146,11 @@ a {
   color: var(--petrol);
 }
 
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
 .hero {
   display: grid;
   gap: 2rem;
@@ -574,6 +579,52 @@ h1 {
   font-weight: 900;
 }
 
+.admin-panel {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.admin-access {
+  margin-top: 1.5rem;
+  max-width: 32rem;
+}
+
+.metric-card strong {
+  color: var(--petrol);
+  display: block;
+  font-size: 2.25rem;
+  line-height: 1;
+}
+
+.admin-business {
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-business-header {
+  align-items: start;
+  display: grid;
+  gap: 1rem;
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.admin-actions .button {
+  min-height: 2.35rem;
+}
+
+.admin-detail {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
 .footer {
   border-top: 1px solid var(--line);
   color: #68756f;
@@ -686,5 +737,9 @@ h1 {
     max-height: 34rem;
     overflow: auto;
     padding-right: 0.25rem;
+  }
+
+  .admin-business-header {
+    grid-template-columns: 1fr auto;
   }
 }

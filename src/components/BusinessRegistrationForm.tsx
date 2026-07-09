@@ -6,19 +6,17 @@ import { plans } from "@/lib/data";
 const requiredFields = [
   "businessName",
   "category",
-  "description",
   "address",
   "owner",
   "email",
-  "phone",
-  "benefit",
-  "validUntil",
   "plan",
 ];
 
 export function BusinessRegistrationForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState("");
 
   function validate(formData: FormData) {
     const nextErrors: Record<string, string> = {};
@@ -46,17 +44,78 @@ export function BusinessRegistrationForm() {
         const formData = new FormData(event.currentTarget);
         const nextErrors = validate(formData);
         setErrors(nextErrors);
-        // Futuro: enviar esta solicitud a Supabase, activar revision en panel administrador y pagos de membresia.
-        setSubmitted(Object.keys(nextErrors).length === 0);
+        setSubmitError("");
+        setSubmitted(false);
+
+        if (Object.keys(nextErrors).length) {
+          return;
+        }
+
+        setIsSubmitting(true);
+
+        fetch("/api/businesses", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.get("businessName"),
+            legal_name: formData.get("legalName"),
+            rut: formData.get("rut"),
+            contact_name: formData.get("owner"),
+            email: formData.get("email"),
+            phone: formData.get("phone"),
+            address: formData.get("address"),
+            category: formData.get("category"),
+            description: formData.get("description"),
+            instagram_url: formData.get("instagram"),
+            website_url: formData.get("website"),
+            opening_hours: formData.get("openingHours"),
+            benefit_title: formData.get("benefitTitle"),
+            benefit_description: formData.get("benefit"),
+            membership_plan: formData.get("plan"),
+          }),
+        })
+          .then(async (response) => {
+            if (!response.ok) {
+              const data = await response.json().catch(() => ({}));
+              throw new Error(data.error ?? "No se pudo enviar la solicitud.");
+            }
+
+            event.currentTarget.reset();
+            setSubmitted(true);
+          })
+          .catch((error: Error) => {
+            setSubmitError(error.message);
+          })
+          .finally(() => {
+            setIsSubmitting(false);
+          });
       }}
       noValidate
     >
       <section className="card form">
         <h2>Datos del negocio</h2>
         <div className="field"><label htmlFor="business-name">Nombre comercial</label><input id="business-name" name="businessName" />{errors.businessName ? <span className="form-error">{errors.businessName}</span> : null}</div>
-        <div className="field"><label htmlFor="category">Categoria</label><input id="category" name="category" />{errors.category ? <span className="form-error">{errors.category}</span> : null}</div>
+        <div className="field"><label htmlFor="legal-name">Razon social</label><input id="legal-name" name="legalName" /></div>
+        <div className="field"><label htmlFor="rut">RUT</label><input id="rut" name="rut" /></div>
+        <div className="field">
+          <label htmlFor="category">Categoria</label>
+          <select id="category" name="category" defaultValue="">
+            <option value="" disabled>Selecciona una categoria</option>
+            <option value="cafe">Cafe</option>
+            <option value="restaurante">Restaurante</option>
+            <option value="oficina">Oficina</option>
+            <option value="cowork">Cowork</option>
+            <option value="servicios">Servicios</option>
+            <option value="bienestar">Bienestar</option>
+            <option value="estacionamiento">Estacionamiento</option>
+            <option value="retail">Retail</option>
+            <option value="local">Local disponible</option>
+          </select>
+          {errors.category ? <span className="form-error">{errors.category}</span> : null}
+        </div>
         <div className="field"><label htmlFor="description">Descripcion</label><textarea id="description" name="description" rows={4} />{errors.description ? <span className="form-error">{errors.description}</span> : null}</div>
         <div className="field"><label htmlFor="address">Direccion</label><input id="address" name="address" />{errors.address ? <span className="form-error">{errors.address}</span> : null}</div>
+        <div className="field"><label htmlFor="opening-hours">Horario</label><input id="opening-hours" name="openingHours" /></div>
       </section>
 
       <section className="card form">
@@ -70,8 +129,8 @@ export function BusinessRegistrationForm() {
 
       <section className="card form">
         <h2>Beneficio ofrecido</h2>
+        <div className="field"><label htmlFor="benefit-title">Titulo del beneficio</label><input id="benefit-title" name="benefitTitle" /></div>
         <div className="field"><label htmlFor="benefit">Beneficio para el distrito</label><textarea id="benefit" name="benefit" rows={3} />{errors.benefit ? <span className="form-error">{errors.benefit}</span> : null}</div>
-        <div className="field"><label htmlFor="valid-until">Vigencia estimada</label><input id="valid-until" name="validUntil" />{errors.validUntil ? <span className="form-error">{errors.validUntil}</span> : null}</div>
       </section>
 
       <section className="card form">
@@ -86,12 +145,15 @@ export function BusinessRegistrationForm() {
         </div>
       </section>
 
-      <button className="button button-primary" type="submit">Enviar solicitud</button>
+      <button className="button button-primary" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? "Enviando..." : "Enviar solicitud"}
+      </button>
       {submitted ? (
         <p className="success-message" role="status">
-          Tu solicitud fue recibida. El equipo de Distrito el Golf revisara la informacion antes de publicar el negocio. Este mensaje es una simulacion visual; todavia no hay backend conectado.
+          Tu solicitud fue recibida correctamente. El equipo de Distrito el Golf revisara la informacion antes de publicar el negocio.
         </p>
       ) : null}
+      {submitError ? <p className="form-error" role="alert">{submitError}</p> : null}
     </form>
   );
 }

@@ -1,6 +1,9 @@
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
-import { activities, benefits, businesses, membershipPlans, socialPosts } from "@/lib/data";
+import { activities, membershipPlans, socialPosts } from "@/lib/data";
+import { getPublicBenefits, getPublicBusinesses } from "@/lib/supabase-public";
+
+export const dynamic = "force-dynamic";
 
 function MapPreview() {
   return (
@@ -13,7 +16,12 @@ function MapPreview() {
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  const [benefits, businesses] = await Promise.all([
+    getPublicBenefits(),
+    getPublicBusinesses(),
+  ]);
+
   return (
     <div className="page-shell">
       <SiteHeader />

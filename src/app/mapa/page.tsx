@@ -1,7 +1,12 @@
 import { DistrictMapLoader } from "@/components/DistrictMapLoader";
 import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
+import { getMapBusinesses } from "@/lib/supabase-public";
 
-export default function MapPage() {
+export const dynamic = "force-dynamic";
+
+export default async function MapPage() {
+  const businesses = await getMapBusinesses();
+
   return (
     <div className="page-shell">
       <SiteHeader />
@@ -24,7 +29,7 @@ export default function MapPage() {
             </p>
           </div>
         </section>
-        <DistrictMapLoader />
+        <DistrictMapLoader businesses={businesses} />
       </main>
       <SiteFooter />
     </div>
