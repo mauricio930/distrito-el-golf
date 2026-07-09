@@ -25,6 +25,7 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  padding-bottom: 4.6rem;
 }
 
 a {
@@ -330,9 +331,59 @@ h1 {
   padding: 2rem 0;
 }
 
+.success-message {
+  background: rgba(80, 122, 88, 0.12);
+  border: 1px solid rgba(80, 122, 88, 0.32);
+  border-radius: 0.65rem;
+  color: var(--petrol);
+  font-weight: 800;
+  line-height: 1.5;
+  margin: 0;
+  padding: 1rem;
+}
+
+.mobile-bottom-nav {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.95);
+  border-top: 1px solid var(--line);
+  bottom: 0;
+  box-shadow: 0 -12px 30px rgba(22, 33, 31, 0.08);
+  display: grid;
+  gap: 0.25rem;
+  grid-template-columns: repeat(4, 1fr);
+  left: 0;
+  padding: 0.55rem 0.6rem;
+  position: fixed;
+  right: 0;
+  z-index: 40;
+}
+
+.mobile-bottom-nav a {
+  border-radius: 0.5rem;
+  color: #51605c;
+  font-size: 0.78rem;
+  font-weight: 900;
+  min-height: 2.6rem;
+  padding: 0.55rem 0.25rem;
+  text-align: center;
+}
+
+.mobile-bottom-nav a:last-child {
+  background: var(--petrol);
+  color: white;
+}
+
 @media (min-width: 760px) {
+  body {
+    padding-bottom: 0;
+  }
+
   .nav {
     display: flex;
+  }
+
+  .mobile-bottom-nav {
+    display: none;
   }
 
   .hero {
