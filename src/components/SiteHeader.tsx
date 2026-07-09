@@ -6,6 +6,7 @@ export function SiteHeader() {
       <div className="container header-inner">
         <Link href="/" className="brand">Distrito el Golf</Link>
         <nav className="nav" aria-label="Principal">
+          <Link href="/">Inicio</Link>
           <Link href="/mapa">Mapa</Link>
           <Link href="/beneficios">Beneficios</Link>
           <Link href="/actividades">Actividades</Link>

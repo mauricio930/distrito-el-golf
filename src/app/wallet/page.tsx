@@ -15,16 +15,24 @@ export default function WalletPage() {
         <div className="grid grid-2">
           <section className="pass-card">
             <p className="pass-label">Proximamente</p>
-            <h2>Apple Wallet y Google Wallet</h2>
-            <p>Integracion Wallet en preparacion.</p>
+            <h2>Distrito el Golf Pass</h2>
+            <p>Proximamente podras agregar este pase a Apple Wallet y Google Wallet.</p>
+            <div className="qr-placeholder" aria-label="QR placeholder">
+              <span />
+              <span />
+              <span />
+              <span />
+            </div>
           </section>
           <section className="card">
             <h2>Que podras hacer con tu pase</h2>
-            <p className="meta">Ver beneficios activos</p>
-            <p className="meta">Recibir novedades del distrito</p>
-            <p className="meta">Acceder al mapa</p>
-            <p className="meta">Descubrir comercios adheridos</p>
-            <p className="meta">Participar en actividades</p>
+            <ul className="check-list">
+              <li>Ver beneficios activos</li>
+              <li>Recibir novedades del distrito</li>
+              <li>Acceder al mapa</li>
+              <li>Descubrir comercios adheridos</li>
+              <li>Participar en actividades</li>
+            </ul>
             <div className="hero-actions">
               <Link href="#" className="button button-primary">Agregar a Apple Wallet</Link>
               <Link href="#" className="button button-secondary">Agregar a Google Wallet</Link>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
-import { activities, benefits, businesses } from "@/lib/data";
+import { activities, benefits, businesses, socialPosts } from "@/lib/data";
 
 function MapPreview() {
   return (
@@ -60,6 +60,25 @@ export default function Home() {
         </section>
 
         <section className="container section">
+          <p className="eyebrow">Que es Distrito el Golf</p>
+          <h2>Una guia moderna para conectar el barrio</h2>
+          <div className="grid grid-3">
+            <article className="card">
+              <h3>Para usuarios</h3>
+              <p className="meta">Un pase digital para descubrir beneficios, actividades y comercios cercanos.</p>
+            </article>
+            <article className="card">
+              <h3>Para locatarios</h3>
+              <p className="meta">Una vitrina institucional para aparecer en el mapa y participar en futuras campanas.</p>
+            </article>
+            <article className="card">
+              <h3>Para visitantes</h3>
+              <p className="meta">Una forma simple de recorrer El Golf desde el celular, con informacion clara y curada.</p>
+            </article>
+          </div>
+        </section>
+
+        <section className="container section">
           <p className="eyebrow">Beneficios activos</p>
           <h2>Primeras ventajas del distrito</h2>
           <div className="grid grid-4">
@@ -68,6 +87,22 @@ export default function Home() {
                 <p className="eyebrow">{benefit.category}</p>
                 <h3>{benefit.business}</h3>
                 <p className="meta">{benefit.offer}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="container section">
+          <p className="eyebrow">Lo que esta pasando en el Distrito</p>
+          <h2>Feed social curado</h2>
+          <div className="grid grid-3">
+            {socialPosts.map((post) => (
+              <article className="social-card" key={post.title}>
+                <div className="social-image" />
+                <p className="eyebrow">{post.tag}</p>
+                <h3>{post.title}</h3>
+                <p className="meta">{post.text}</p>
+                <Link href="https://www.instagram.com" className="inline-link">Ver en Instagram</Link>
               </article>
             ))}
           </div>

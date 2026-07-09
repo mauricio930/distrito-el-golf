@@ -1,6 +1,8 @@
 import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
 import { businesses } from "@/lib/data";
 
+const filters = ["Cafes", "Restaurantes", "Oficinas", "Servicios", "Descuentos"];
+
 export default function MapPage() {
   return (
     <div className="page-shell">
@@ -15,10 +17,16 @@ export default function MapPage() {
           <button className="button button-primary">Usar mi ubicacion</button>
         </div>
         <p className="meta">La georreferenciacion real se integrara en la proxima etapa.</p>
+        <div className="hero-actions">
+          {filters.map((filter) => (
+            <button className="button button-secondary" key={filter}>{filter}</button>
+          ))}
+        </div>
         <div className="map-preview" style={{ marginTop: "1.5rem" }}>
           <span className="pin" style={{ left: "25%", top: "36%" }} />
           <span className="pin" style={{ left: "58%", top: "31%" }} />
           <span className="pin" style={{ left: "72%", top: "61%" }} />
+          <span className="pin" style={{ left: "44%", top: "72%" }} />
         </div>
         <div className="grid grid-2">
           {businesses.map((business) => (
